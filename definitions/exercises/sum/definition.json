@@ -1,0 +1,31 @@
+{
+  "id": "sample::sum",
+  "panelLabel": "Sum",
+  "testEnvironments": ["javascript-jest", "typescript-jest"],
+  "fileSchemasMap": {
+    "javascript-jest": [
+      {
+        "fileName": "sum.js",
+        "type": "CODE"
+      },
+      {
+        "fileName": "sum.test.js",
+        "type": "TEST"
+      }
+    ],
+    "typescript-jest": [
+      {
+        "fileName": "sum.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "sum.test.ts",
+        "type": "TEST"
+      }
+    ]
+  },
+  "testCommandsMap": {
+    "javascript-jest": "jest",
+    "typescript-jest": "jest"
+  }
+}

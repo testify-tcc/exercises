@@ -1,0 +1,31 @@
+{
+  "id": "sample::subtract",
+  "panelLabel": "Subtract",
+  "testEnvironments": ["javascript-jest", "typescript-jest"],
+  "fileSchemasMap": {
+    "javascript-jest": [
+      {
+        "fileName": "subtract.js",
+        "type": "CODE"
+      },
+      {
+        "fileName": "subtract.test.js",
+        "type": "TEST"
+      }
+    ],
+    "typescript-jest": [
+      {
+        "fileName": "subtract.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "subtract.test.ts",
+        "type": "TEST"
+      }
+    ]
+  },
+  "testCommandsMap": {
+    "javascript-jest": "jest",
+    "typescript-jest": "jest"
+  }
+}

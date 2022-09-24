@@ -1,0 +1,5 @@
+{
+  "id": "sample",
+  "panelLabel": "Sample",
+  "exercisesIds": ["sample::sum", "sample::subtract"]
+}
