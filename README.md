@@ -70,7 +70,7 @@ Inside the created directory you must add `definition.json` file.
       {
         "fileName": "sum.js",
         "type": "CODE"
-      }
+      },
       {
         "fileName": "sum.test.js",
         "type": "TEST"
@@ -80,17 +80,17 @@ Inside the created directory you must add `definition.json` file.
       {
         "fileName": "sum.ts",
         "type": "CODE"
-      }
+      },
       {
         "fileName": "sum.test.ts",
         "type": "TEST"
       }
-    ],
+    ]
   },
   "testCommandsMap": {
     "javascript-jest": "jest",
-    "typescript-jest": "jest",
-  },
+    "typescript-jest": "jest"
+  }
 }
 ```
 
