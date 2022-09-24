@@ -62,7 +62,7 @@ Inside the created directory you must add `definition.json` file.
 
 ```json
 {
-  "id": "string val",
+  "id": "sample::sum",
   "panelLabel": "Sum",
   "testEnvironments": ["javascript-jest", "typescript-jest"],
   "fileSchemasMap": {
