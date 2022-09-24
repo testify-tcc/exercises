@@ -94,6 +94,10 @@ Inside the created directory you must add `definition.json` file.
 }
 ```
 
+## Description
+
+After creating the definition file, you should create a description (`description.md`). The description must be written in Markdown and it's mandatory, to create a better experience for the users.
+
 # Step by step to create a section definition
 
 A directory must be created `/definitions/sections/<section-directory-name>`. Please keep in mind that a section needs to have exercises.
@@ -119,3 +123,7 @@ Inside the created directory you must add `definition.json` file.
   "exercisesIds": ["sample::sum", "sample::subtract"]
 }
 ```
+
+## Description
+
+After creating the definition file, you should create a description (`description.md`). The description must be written in Markdown and it's mandatory, to create a better experience for the users.
