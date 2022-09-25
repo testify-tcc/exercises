@@ -18,6 +18,10 @@ Exercises have in fact the code and test files, the environments they can run (e
 
 A directory must be created `/definitions/exercises/<exercise-directory-name>`.
 
+## Files
+
+Inside the exercise definition directory I must create another directory called `files`, which will contain the files used in the exercise.
+
 ## Types
 
 ### TestEnvironmentID
@@ -32,7 +36,7 @@ A TestEnvironmentID refers to an existent environment that's available to be use
 
 | Field      | Type          | Description                                                                               |
 | ---------- | ------------- | ----------------------------------------------------------------------------------------- |
-| `fileName` | `String`      | Refers to a file defined in the same directory as the exercise definition.                |
+| `fileName` | `String`      | Refers to a file defined in the `files` directory in the exercise definition.             |
 | `type`     | `CODE / TEST` | The type `CODE` represents the file that will be tested and `TEST` the actual test files. |
 
 ##### Example
