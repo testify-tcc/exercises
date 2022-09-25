@@ -17,13 +17,14 @@ DESCRIPTION_FILE_NAME = "description.md"
 
 class DefinitionService():
   def processDefinitions(self) -> Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]]:
-    definitionsMap = dict()
-    definitionIds = set()
+    definitionIds: Set[str] = set()
+    definitionPositions: Dict[str, int] = dict()
+    definitionsMap: Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]] = dict()
     
-    self.processExerciseDefinitions(definitionsMap, definitionIds)
-    self.processSectionDefinitions(definitionsMap, definitionIds)
+    self.processExerciseDefinitions(definitionsMap, definitionIds, definitionPositions)
+    self.processSectionDefinitions(definitionsMap, definitionIds, definitionPositions)
 
-    definitions = [definitionsMap[definitionId] for definitionId in definitionIds]
+    definitions = self.getDefinitionList(definitionIds, definitionPositions, definitionsMap)
     
     return {
       'map': definitionsMap,
@@ -34,6 +35,7 @@ class DefinitionService():
     self,
     definitionsMap: Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]],
     definitionIds: Set[str],
+    definitionPositions: Dict[str, int],
   ) -> Set[str]:
     exerciseDirs = self.getExerciseDirs()
 
@@ -56,7 +58,7 @@ class DefinitionService():
       )
 
       definitionIds.add(exerciseId)
-
+      definitionPositions[exerciseId] = exerciseDefinition.panelPosition
       definitionsMap[exerciseId] = ProcessedExerciseDefinition(
         exerciseId,
         exerciseDefinition.panelLabel,
@@ -105,6 +107,7 @@ class DefinitionService():
     self,
     definitionsMap: Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]],
     definitionIds: Set[str],
+    definitionPositions: Dict[str, int],
   ):
     sectionDirs = self.getSectionDirs()
 
@@ -122,17 +125,15 @@ class DefinitionService():
       if sectionId in definitionsMap:
         raise Exception('Section IDs must be unique')
 
+      processedExercises = self.getProcessedExercises(
+        sectionDefinition.exerciseIds,
+        definitionIds,
+        definitionPositions,
+        definitionsMap,
+      )
+
       definitionIds.add(sectionId)
-
-      processedExercises = []
-
-      for exerciseId in sectionDefinition.exerciseIds:
-        if exerciseId not in definitionsMap:
-          raise Exception('Section exercise IDs must exist')
-
-        definitionIds.remove(exerciseId)
-        processedExercises.append(definitionsMap[exerciseId])
-
+      definitionPositions[sectionId] = sectionDefinition.panelPosition
       definitionsMap[sectionId] = ProcessedSectionDefinition(
         sectionDefinition.id,
         sectionDefinition.panelLabel,
@@ -145,3 +146,33 @@ class DefinitionService():
 
   def getSectionDirs(self):
     return next(os.walk(env.SECTIONS_PATH))[1]
+
+  def getProcessedExercises(
+    self,
+    exerciseIds: List[str],
+    definitionIds: Set[str],
+    definitionPositions: Dict[str, int],
+    definitionsMap: Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]],
+  ) -> List[ProcessedExerciseDefinition]:
+    processedExercises: List[ProcessedExerciseDefinition] = []
+
+    for exerciseId in exerciseIds:
+      if exerciseId not in definitionsMap:
+        raise Exception('Section exercise IDs must exist')
+
+      definitionIds.remove(exerciseId)
+      processedExercises.append(definitionsMap[exerciseId])
+
+    processedExercises.sort(key=lambda processedExercise: definitionPositions[processedExercise.id])
+
+    return processedExercises
+
+  def getDefinitionList(
+    self,
+    definitionIds: Set[str],
+    definitionPositions: Dict[str, int],
+    definitionsMap: Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]],
+  ) -> List[Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]]:
+    definitions = [definitionsMap[definitionId] for definitionId in definitionIds]
+    definitions.sort(key=lambda definition: definitionPositions[definition.id])
+    return definitions

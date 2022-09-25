@@ -1,6 +1,7 @@
 {
   "id": "sample::sum",
   "panelLabel": "Sum",
+  "panelPosition": 1,
   "testEnvironments": ["javascript-jest", "typescript-jest"],
   "fileSchemasMap": {
     "javascript-jest": [

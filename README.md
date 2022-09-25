@@ -50,13 +50,14 @@ Inside the created directory you must add `definition.json` file.
 
 ### Fields
 
-| Field                 | Type                                                    | Description                                                                                                                                                                                     |
-| --------------------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                  | `ID`                                                    | This id must be unique between exercises and sections.                                                                                                                                          |
-| `panelLabel`          | `String`                                                | Testify's interface exercises page has a panel on the left-hand side, where the user can select one. This is the label that will be rendered there. It's important this label to be unique too. |
-| `testingEnvironments` | `Array<TestEnvironmentID>`                              | List of environments available for this exercise.                                                                                                                                               |
-| `fileSchemasMap`      | `Map<TestEnvironmentID, Array<ExerciseFileDefinition>>` | A map that defines exercises based on test environments.                                                                                                                                        |
-| `testCommandsMap`     | `Map<TestEnvironmentID, String>`                        | A map that defines commands to run the exercise tests based on test environments.                                                                                                               |
+| Field                 | Type                                                    | Description                                                                                                                                                                                                                           |
+| --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`                  | `ID`                                                    | This id must be unique between exercises and sections.                                                                                                                                                                                |
+| `panelLabel`          | `String`                                                | Testify's interface exercises page has a panel on the left-hand side, where the user can select one. This is the label that will be rendered there. It's important this label to be unique too.                                       |
+| `panelPosition`       | `Optional<Integer>`                                     | Position that this exercise will appear in the interface left-hand panel. If the exercise is part of a section, the value will be relative to the section exercises only. If not set, the section will be put in the latest position. |
+| `testingEnvironments` | `Array<TestEnvironmentID>`                              | List of environments available for this exercise.                                                                                                                                                                                     |
+| `fileSchemasMap`      | `Map<TestEnvironmentID, Array<ExerciseFileDefinition>>` | A map that defines exercises based on test environments.                                                                                                                                                                              |
+| `testCommandsMap`     | `Map<TestEnvironmentID, String>`                        | A map that defines commands to run the exercise tests based on test environments.                                                                                                                                                     |
 
 ### Example
 
@@ -64,6 +65,7 @@ Inside the created directory you must add `definition.json` file.
 {
   "id": "sample::sum",
   "panelLabel": "Sum",
+  "panelPosition": 1,
   "testEnvironments": ["javascript-jest", "typescript-jest"],
   "fileSchemasMap": {
     "javascript-jest": [
@@ -108,11 +110,12 @@ Inside the created directory you must add `definition.json` file.
 
 ### Fields
 
-| Fields        | Type        | Description                                                                                                                                                                                     |
-| ------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`          | `ID`        | This id must be unique between exercises and sections.                                                                                                                                          |
-| `panelLabel`  | `String`    | Testify's interface exercises page has a panel on the left-hand side, where the user can select one. This is the label that will be rendered there. It's important this label to be unique too. |
-| `exerciseIds` | `Array<ID>` | List of IDs of exercises that will be part of this section                                                                                                                                      |
+| Fields          | Type                | Description                                                                                                                                                                                     |
+| --------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `id`            | `ID`                | This id must be unique between exercises and sections.                                                                                                                                          |
+| `panelLabel`    | `String`            | Testify's interface exercises page has a panel on the left-hand side, where the user can select one. This is the label that will be rendered there. It's important this label to be unique too. |
+| `panelPosition` | `Optional<Integer>` | Position that this section will appear in the interface left-hand panel. If not set, the section will be put in the latest position.                                                            |
+| `exerciseIds`   | `Array<ID>`         | List of IDs of exercises that will be part of this section                                                                                                                                      |
 
 ### Example
 
@@ -120,6 +123,7 @@ Inside the created directory you must add `definition.json` file.
 {
   "id": "sample",
   "panelLabel": "Sample",
+  "panelPosition": 1,
   "exercisesIds": ["sample::sum", "sample::subtract"]
 }
 ```

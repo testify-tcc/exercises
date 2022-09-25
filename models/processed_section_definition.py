@@ -1,3 +1,4 @@
+from ctypes import Union
 from curses import panel
 from typing import List
 

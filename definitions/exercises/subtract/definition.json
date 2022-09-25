@@ -1,6 +1,7 @@
 {
   "id": "sample::subtract",
   "panelLabel": "Subtract",
+  "panelPosition": 2,
   "testEnvironments": ["javascript-jest", "typescript-jest"],
   "fileSchemasMap": {
     "javascript-jest": [
