@@ -15,18 +15,18 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Stop service
-        run: screen -S ${{secrets.SCREEN_SESSION_NAME}} -X quit
+        run: screen -S ${{ec2-deployment.SCREEN_SESSION_NAME}} -X quit
 
       - name: Deploy to Server 1
         uses: easingthemes/ssh-deploy@main
         env:
-          SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-          REMOTE_HOST: ${{secrets.HOST_DNS}}
-          REMOTE_USER: ${{secrets.USERNAME}}
-          TARGET: ${{secrets.TARGET_DIR}}
+          SSH_PRIVATE_KEY: ${{ec2-deployment.EC2_SSH_KEY}}
+          REMOTE_HOST: ${{ec2-deployment.HOST_DNS}}
+          REMOTE_USER: ${{ec2-deployment.USERNAME}}
+          TARGET: ${{ec2-deployment.TARGET_DIR}}
 
       - name: Install requirements
-        run: pip install -r ${{secrets.TARGET_DIR}}/requirements.txt
+        run: pip install -r ${{ec2-deployment.TARGET_DIR}}/requirements.txt
 
       - name: Rerun service
-        run: screen -d -m -S ${{secrets.SCREEN_SESSION_NAME}} sh ${{secrets.TARGET_DIR}}/run_server.sh
+        run: screen -d -m -S ${{ec2-deployment.SCREEN_SESSION_NAME}} sh ${{ec2-deployment.TARGET_DIR}}/run_server.sh
