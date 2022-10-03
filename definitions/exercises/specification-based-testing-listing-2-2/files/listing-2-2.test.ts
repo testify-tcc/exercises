@@ -8,7 +8,7 @@ describe("should return proper result", () => {
     expect().toEqual(["bc"]);
   });
   // This test case should test whether the function works properly
-  // when multiple substrings should be retuned
+  // when multiple substrings should be returned
   it("should return multiple substrings", () => {
     expect().toEqual(["bc", "bc"]);
   });
