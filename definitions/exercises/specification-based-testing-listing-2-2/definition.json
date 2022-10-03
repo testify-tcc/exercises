@@ -1,0 +1,21 @@
+{
+  "id": "specification-based-testing::listing-2-2",
+  "panelLabel": "Listing 2.2",
+  "panelPosition": 1,
+  "testEnvironments": ["typescript-jest"],
+  "fileSchemasMap": {
+    "typescript-jest": [
+      {
+        "fileName": "listing-2-2.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "listing-2-2.test.ts",
+        "type": "TEST"
+      }
+    ]
+  },
+  "testCommandsMap": {
+    "typescript-jest": "jest"
+  }
+}
