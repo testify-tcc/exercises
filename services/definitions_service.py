@@ -2,6 +2,7 @@ from typing import Dict, List, Set, Union
 
 from models.processed_section_definition import ProcessedSectionDefinition
 from models.processed_exercise_definition import ProcessedExerciseDefinition
+from services.definitions_json_service import DefinitionsJSONService
 from services.section_definitions_service import SectionDefinitionsService
 from services.exercise_definitions_service import ExerciseDefinitionsService
 
@@ -14,11 +15,16 @@ class DefinitionService():
     self,
     exerciseDefinitionsService: ExerciseDefinitionsService,
     sectionDefinitionsService: SectionDefinitionsService,
+    definitionsJSONService: DefinitionsJSONService,
   ) -> None:
     self.exerciseDefinitionsService = exerciseDefinitionsService
     self.sectionDefinitionsService = sectionDefinitionsService
+    self.definitionsJSONService = definitionsJSONService
 
-  def processDefinitions(self) -> Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]]:
+  def getDefinitions(self) -> Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]]:
+    return self.definitionsJSONService.readDefinitions()
+
+  def generateDefinitions(self) -> None:
     definitionIds: Set[str] = set()
     definitionPositions: Dict[str, int] = dict()
     definitionsMap: Dict[str, Union[ProcessedExerciseDefinition, ProcessedSectionDefinition]] = dict()
@@ -35,16 +41,13 @@ class DefinitionService():
       definitionPositions
     )
 
-    definitions = self.getDefinitionList(
+    definitionsList = self.getDefinitionList(
       definitionIds,
       definitionPositions,
       definitionsMap
     )
-    
-    return {
-      'map': definitionsMap,
-      'list': definitions
-    }
+
+    self.definitionsJSONService.writeDefinitions(definitionsMap, definitionsList)
 
   def getDefinitionList(
     self,

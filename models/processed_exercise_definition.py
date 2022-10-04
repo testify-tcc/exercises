@@ -29,3 +29,19 @@ class ProcessedExerciseDefinition():
     self.fileSchemasMap = fileSchemasMap
     self.testCommandsMap = testCommandsMap
     self.type = DefinitionType.EXERCISE
+
+  def toJson(self) -> Dict:
+    jsonFileSchemas = {}
+
+    for testEnvironment, fileSchemas in self.fileSchemasMap.items():
+      jsonFileSchemas[testEnvironment] = [fileSchema.toJson() for fileSchema in fileSchemas]
+
+    return {
+      'id': self.id,
+      'panelLabel': self.panelLabel,
+      'description': self.description,
+      'testEnvironments': self.testEnvironments,
+      'testCommandsMap': jsonFileSchemas,
+      'testCommandsMap': self.testCommandsMap,
+      'type': self.type
+    }

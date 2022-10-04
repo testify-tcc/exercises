@@ -1,4 +1,5 @@
 from services.definitions_service import DefinitionService
+from services.definitions_json_service import DefinitionsJSONService
 from services.section_definitions_service import SectionDefinitionsService
 from services.exercise_definitions_service import ExerciseDefinitionsService
 from services.definition_file_system_service import DefinitionFileSystemService
@@ -6,4 +7,9 @@ from services.definition_file_system_service import DefinitionFileSystemService
 definitionFileSystemService = DefinitionFileSystemService()
 exerciseDefinitionsService = ExerciseDefinitionsService(definitionFileSystemService)
 sectionDefinitionsService = SectionDefinitionsService(definitionFileSystemService)
-definitionsService = DefinitionService(exerciseDefinitionsService, sectionDefinitionsService)
+definitionsJSONService = DefinitionsJSONService()
+definitionsService = DefinitionService(
+  exerciseDefinitionsService,
+  sectionDefinitionsService,
+  definitionsJSONService
+)

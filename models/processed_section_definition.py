@@ -1,6 +1,6 @@
 from ctypes import Union
 from curses import panel
-from typing import List
+from typing import Dict, List
 
 from models.definition_type import DefinitionType
 from models.processed_exercise_definition import ProcessedExerciseDefinition
@@ -25,3 +25,12 @@ class ProcessedSectionDefinition():
     self.panelLabel = panelLabel
     self.description = description
     self.type = DefinitionType.SECTION
+
+  def toJson(self) -> Dict:
+    return {
+      'id': self.id,
+      'exercises': [exercise.toJson() for exercise in self.exercises],
+      'panelLabel': self.panelLabel,
+      'description': self.description,
+      'type': self.type
+    }

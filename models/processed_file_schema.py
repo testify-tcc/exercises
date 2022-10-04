@@ -1,3 +1,4 @@
+from typing import Dict
 from models.file_schema_type import FileSchemaType
 
 
@@ -10,3 +11,10 @@ class ProcessedFileSchema():
     self.type = type
     self.fileName = fileName
     self.initialContent = initialContent
+
+  def toJson(self) -> Dict:
+    return {
+      'type': self.type,
+      'fileName': self.fileName,
+      'initialContent': self.initialContent,
+    }

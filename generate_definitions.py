@@ -1,0 +1,3 @@
+from dependency_container import definitionsService
+
+definitionsService.generateDefinitions()

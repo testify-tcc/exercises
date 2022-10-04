@@ -5,5 +5,5 @@ app = bootstrap()
 
 @app.get("/")
 def getExercises():
-  return definitionsService.processDefinitions()
+  return definitionsService.getDefinitions()
     
