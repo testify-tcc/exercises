@@ -14,7 +14,7 @@ class ProcessedFileSchema():
 
   def toJson(self) -> Dict:
     return {
-      'type': self.type,
+      'type': self.type.value,
       'fileName': self.fileName,
       'initialContent': self.initialContent,
     }

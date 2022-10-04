@@ -32,5 +32,5 @@ class ProcessedSectionDefinition():
       'exercises': [exercise.toJson() for exercise in self.exercises],
       'panelLabel': self.panelLabel,
       'description': self.description,
-      'type': self.type
+      'type': self.type.value
     }

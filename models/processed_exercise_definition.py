@@ -41,7 +41,7 @@ class ProcessedExerciseDefinition():
       'panelLabel': self.panelLabel,
       'description': self.description,
       'testEnvironments': self.testEnvironments,
-      'testCommandsMap': jsonFileSchemas,
+      'fileSchemasMap': jsonFileSchemas,
       'testCommandsMap': self.testCommandsMap,
-      'type': self.type
+      'type': self.type.value
     }
