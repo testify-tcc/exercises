@@ -1,7 +1,7 @@
 import os
 import env
 
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Union
 
 from models.file_schema import FileSchema
 from models.exercise_definition import ExerciseDefinition
@@ -26,8 +26,18 @@ class ExerciseDefinitionsService():
     for exerciseDir in exerciseDirs:
       exerciseDirPath = f"{env.EXERCISES_PATH}/{exerciseDir}"
 
-      exerciseDescription = self.definitionFileSystemService.getDescription(exerciseDirPath)
       exerciseDefinition = ExerciseDefinition(self.definitionFileSystemService.getDefinitionJson(exerciseDirPath))
+
+      exerciseDescriptionsMap = self.processExerciseDescriptionsMap(
+        exerciseDirPath,
+        exerciseDefinition.testEnvironments,
+        exerciseDefinition.description,
+      )
+      exerciseSolutionsMap = self.processExerciseSolutionDescriptionsMap(
+        exerciseDirPath,
+        exerciseDefinition.testEnvironments,
+        exerciseDefinition.solutionDescription
+      )
 
       exerciseId = exerciseDefinition.id
 
@@ -44,7 +54,8 @@ class ExerciseDefinitionsService():
       definitionsMap[exerciseId] = ProcessedExerciseDefinition(
         exerciseId,
         exerciseDefinition.panelLabel,
-        exerciseDescription,
+        exerciseDescriptionsMap,
+        exerciseSolutionsMap,
         exerciseDefinition.testEnvironments,
         processedFileSchemasMap,
         exerciseDefinition.testCommandsMap,
@@ -52,6 +63,60 @@ class ExerciseDefinitionsService():
 
   def getExerciseDirs(self):
     return next(os.walk(env.EXERCISES_PATH))[1]
+
+  def processExerciseSolutionDescriptionsMap(
+    self,
+    exerciseDefinitionDirPath: str,
+    exerciseTestEnvironments: List[str],
+    exerciseDefinitionSolutionDescription: Union[str, Dict[str, str]],
+  ):
+    exerciseSolutionDescriptionsMap = dict()
+
+    if isinstance(exerciseDefinitionSolutionDescription, str):
+      solutionDescriptionContent = self.definitionFileSystemService.getExerciseSolutionDescription(
+        exerciseDefinitionDirPath,
+        exerciseDefinitionSolutionDescription
+      )
+
+      for testEnvironment in exerciseTestEnvironments:
+        exerciseSolutionDescriptionsMap[testEnvironment] = solutionDescriptionContent
+    else:
+      for testEnvironment in exerciseTestEnvironments:
+        solutionDescriptionContent = self.definitionFileSystemService.getExerciseSolutionDescription(
+          exerciseDefinitionDirPath,
+          exerciseDefinitionSolutionDescription[testEnvironment]
+        )
+
+        exerciseSolutionDescriptionsMap[testEnvironment] = solutionDescriptionContent
+
+    return exerciseSolutionDescriptionsMap
+
+  def processExerciseDescriptionsMap(
+    self,
+    exerciseDefinitionDirPath: str,
+    exerciseTestEnvironments: List[str],
+    exerciseDefinitionDescription: Union[str, Dict[str, str]],
+  ):
+    exerciseDescriptionsMap = dict()
+
+    if isinstance(exerciseDefinitionDescription, str):
+      descriptionContent = self.definitionFileSystemService.getExerciseDescription(
+        exerciseDefinitionDirPath,
+        exerciseDefinitionDescription
+      )
+
+      for testEnvironment in exerciseTestEnvironments:
+        exerciseDescriptionsMap[testEnvironment] = descriptionContent
+    else:
+      for testEnvironment in exerciseTestEnvironments:
+        descriptionContent = self.definitionFileSystemService.getExerciseDescription(
+          exerciseDefinitionDirPath,
+          exerciseDefinitionDescription[testEnvironment]
+        )
+
+        exerciseDescriptionsMap[testEnvironment] = descriptionContent
+
+    return exerciseDescriptionsMap
 
   def processFileSchemasMap(
     self,

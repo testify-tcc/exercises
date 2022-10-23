@@ -24,7 +24,7 @@ class SectionDefinitionsService():
     for sectionDir in sectionDirs:
       sectionDirPath = f"{env.SECTIONS_PATH}/{sectionDir}"
 
-      sectionDescription = self.definitionFileSystemService.getDescription(sectionDirPath)
+      sectionDescription = self.definitionFileSystemService.getSectionDescription(sectionDirPath)
       sectionDefinition = SectionDefinition(self.definitionFileSystemService.getDefinitionJson(sectionDirPath))
 
       sectionId = sectionDefinition.id

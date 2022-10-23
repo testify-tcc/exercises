@@ -28,5 +28,10 @@
   "testCommandsMap": {
     "javascript-jest": "jest",
     "typescript-jest": "jest"
+  },
+  "description": "description.md",
+  "solution": {
+    "javascript-jest": "solution-javascript-jest.md",
+    "typescript-jest": "solution-typescript-jest.md"
   }
 }

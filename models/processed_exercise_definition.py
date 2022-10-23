@@ -7,9 +7,10 @@ from models.processed_file_schema import ProcessedFileSchema
 class ProcessedExerciseDefinition():
   id: str
   panelLabel: str
-  description: str
   type: DefinitionType
   testEnvironments: List[str]
+  descriptionsMap: Dict[str, str]
+  solutionDescriptionsMap: Dict[str, str]
   testCommandsMap: Dict[str, str]
   fileSchemasMap: Dict[str, List[ProcessedFileSchema]]
 
@@ -17,14 +18,16 @@ class ProcessedExerciseDefinition():
     self,
     id: str,
     panelLabel: str,
-    description: str,
+    descriptionsMap: Dict[str, str],
+    solutionDescriptionsMap: Dict[str, str],
     testEnvironments: List[str],
     fileSchemasMap: Dict[str, List[ProcessedFileSchema]],
     testCommandsMap: Dict[str, str]
   ) -> None:
     self.id = id
     self.panelLabel = panelLabel
-    self.description = description
+    self.descriptionsMap = descriptionsMap
+    self.solutionDescriptionsMap = solutionDescriptionsMap
     self.testEnvironments = testEnvironments
     self.fileSchemasMap = fileSchemasMap
     self.testCommandsMap = testCommandsMap
@@ -39,7 +42,8 @@ class ProcessedExerciseDefinition():
     return {
       'id': self.id,
       'panelLabel': self.panelLabel,
-      'description': self.description,
+      'descriptionsMap': self.descriptionsMap,
+      'solutionDescriptionsMap': self.solutionDescriptionsMap,
       'testEnvironments': self.testEnvironments,
       'fileSchemasMap': jsonFileSchemas,
       'testCommandsMap': self.testCommandsMap,

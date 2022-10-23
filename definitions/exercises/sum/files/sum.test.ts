@@ -3,5 +3,5 @@
 import { sum } from "./sum";
 
 test("should return proper result", () => {
-  expect().toBe(2);
+  expect().toBe();
 });

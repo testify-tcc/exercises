@@ -17,5 +17,7 @@
   },
   "testCommandsMap": {
     "typescript-jest": "jest"
-  }
+  },
+  "description": "description.md",
+  "solution": "solution.md"
 }
