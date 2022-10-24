@@ -1,9 +1,9 @@
 "use strict";
 
-import { substringsBetween } from "./listing-2-2";
+import { substringsBetween } from "./strings-between";
 
 describe("should return proper result", () => {
-  it("simple case", () => {
+  it("", () => {
     expect().toEqual();
   });
 });

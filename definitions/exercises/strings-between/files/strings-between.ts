@@ -2,21 +2,18 @@
 
 export function substringsBetween(
   str: string | null,
-  open: string,
-  close: string
+  open: string | null,
+  close: string | null
 ): string[] | null {
-  if (str === null || open === null || close === null) {
+  if (str == null || open == null || open.length == 0 || close == null || close.length == 0) {
     return null;
   }
   const strLen = str.length;
-  const openLen = open.length;
-  const closeLen = close.length;
-  if (closeLen === 0 || openLen === 0) {
-    return null;
-  }
   if (strLen === 0) {
     return [];
   }
+  const closeLen = close.length;
+  const openLen = open.length;
   const list: string[] = [];
   let pos = 0;
   while (pos < strLen - closeLen) {

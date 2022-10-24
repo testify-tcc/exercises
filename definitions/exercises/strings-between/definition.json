@@ -1,16 +1,16 @@
 {
-  "id": "specification-based-testing::listing-2-2",
-  "panelLabel": "Listing 2.2",
+  "id": "specification-based-testing::strings-between",
+  "panelLabel": "Strings Between",
   "panelPosition": 1,
   "testEnvironments": ["typescript-jest"],
   "fileSchemasMap": {
     "typescript-jest": [
       {
-        "fileName": "listing-2-2.ts",
+        "fileName": "strings-between.ts",
         "type": "CODE"
       },
       {
-        "fileName": "listing-2-2.test.ts",
+        "fileName": "strings-between.test.ts",
         "type": "TEST"
       }
     ]
