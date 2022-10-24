@@ -18,9 +18,17 @@ Exercises have in fact the code and test files, the environments they can run (e
 
 A directory must be created `/definitions/exercises/<exercise-directory-name>`.
 
+## Descriptions
+
+Inside the exercise definition directory, you must create another directory called `descriptions`. Here you'll store markdown files to be used as the exercise's description. You might want to add more than one, because you can use different descriptions based on the testing environment selected by the user.
+
+## Solutions
+
+Inside the exercise definition directory, you must create another directory called `solutions`. Here you'll store markdown files to be used as the exercise's solutions. You might want to add more than one, because you can use different solutions based on the testing environment selected by the user.
+
 ## Files
 
-Inside the exercise definition directory I must create another directory called `files`, which will contain the files used in the exercise.
+Inside the exercise definition directory, you must create another directory called `files`, which will contain the files used in the exercise.
 
 ## Types
 
@@ -62,6 +70,8 @@ Inside the created directory you must add `definition.json` file.
 | `testingEnvironments` | `Array<TestEnvironmentID>`                              | List of environments available for this exercise.                                                                                                                                                                                     |
 | `fileSchemasMap`      | `Map<TestEnvironmentID, Array<ExerciseFileDefinition>>` | A map that defines exercises based on test environments.                                                                                                                                                                              |
 | `testCommandsMap`     | `Map<TestEnvironmentID, String>`                        | A map that defines commands to run the exercise tests based on test environments.                                                                                                                                                     |
+|`description`|`String` or `Map<String, String>`|Its value refers to a markdown file under the "descriptions" directory in the exercise directory. In case it's a string, it means that the exercise has only one description, regardless the used testing environment. In case it's a map, each key represents one of the testing environments available on this exercise, pointing to a markdown file under the "descriptions" directory.|
+|`solution`|`String` or `Map<String, String>`|Its value refers to a markdown file under the "solutions" directory in the exercise directory. In case it's a string, it means that the exercise has only one description, regardless the used testing environment. In case it's a map, each key represents one of the testing environments available on this exercise, pointing to a markdown file under the "solutions" directory.
 
 ### Example
 
@@ -96,6 +106,11 @@ Inside the created directory you must add `definition.json` file.
   "testCommandsMap": {
     "javascript-jest": "jest",
     "typescript-jest": "jest"
+  },
+  "description": "description.md",
+  "solution": {
+    "javascript-jest": "solution-javascript-jest.md",
+    "typescript-jest": "solution-typescript-jest.md"
   }
 }
 ```
