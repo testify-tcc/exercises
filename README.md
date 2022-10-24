@@ -20,11 +20,11 @@ A directory must be created `/definitions/exercises/<exercise-directory-name>`.
 
 ## Descriptions
 
-Inside the exercise definition directory, you must create another directory called `descriptions`. Here you'll store markdown files to be used as the exercise's description. You might want to add more than one, because you can use different descriptions based on the testing environment selected by the user.
+Inside the exercise definition directory, you must create another directory called `descriptions`. Here you'll store markdown files to be used as the exercise's description. You might want to add more than one, because you can use different descriptions based on the testing environment selected by the user. It's mandatory to add at least one description to the exercise, in order to provide guidance to the users.
 
 ## Solutions
 
-Inside the exercise definition directory, you must create another directory called `solutions`. Here you'll store markdown files to be used as the exercise's solutions. You might want to add more than one, because you can use different solutions based on the testing environment selected by the user.
+Inside the exercise definition directory, you must create another directory called `solutions`. Here you'll store markdown files to be used as the exercise's solutions. You might want to add more than one, because you can use different solutions based on the testing environment selected by the user. It's mandatory to add at least one solution to the exercise, in order to provide guidance to the users.
 
 ## Files
 
@@ -150,3 +150,9 @@ Inside the created directory you must add `definition.json` file.
 ## Description
 
 After creating the definition file, you should create a description (`description.md`). The description must be written in Markdown and it's mandatory, to create a better experience for the users.
+
+# Running locally
+
+* Clone the directory
+* Install requirements by running: `pip install -r requirements.txt`
+* Run the server with: `sh run_server.sh`
