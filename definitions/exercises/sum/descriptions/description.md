@@ -1,3 +1,3 @@
 # Sum
 
-Write a simple test for the function sum.
+Write a simple unit test for the function sum.

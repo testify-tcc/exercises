@@ -2,8 +2,10 @@
 
 import { substringsBetween } from "./strings-between";
 
-describe("should return proper result", () => {
+describe("substringsBetween test", () => {
+  // BEGINNING EDITING SECTION
   it("", () => {
     expect().toEqual();
   });
+  // ENDING EDITING SECTION
 });

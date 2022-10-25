@@ -12,4 +12,4 @@ test("should return proper result", () => {
 });
 ```
 
-if you look at the `subtract()` implementation you'll probably think that just one test is enough, and you are correct indeed. But sometimes is important to test other cases just to be sure about the program correctness. In this exercise we tested sum between negative and positive numbers as a precaution.
+If you look at the `subtract()` implementation you'll probably think that just one test is enough, and you are correct! But sometimes it's important to test other cases just to be sure of the program correctness. In this exercise we tested running `subtract()` with negative and positive numbers.

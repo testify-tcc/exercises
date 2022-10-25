@@ -2,6 +2,8 @@
 
 const { sum } = require("./sum.js");
 
-test("should return proper result", () => {
+test("sum test", () => {
+  // BEGINNING EDITING SECTION
   expect().toBe();
+  // ENDING EDITING SECTION
 });

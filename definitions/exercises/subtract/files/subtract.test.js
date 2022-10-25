@@ -2,6 +2,8 @@
 
 const { subtract } = require("./subtract.js");
 
-test("should return proper result", () => {
+test("subtract test", () => {
+  // BEGINNING EDITING SECTION
   expect().toBe();
+  // ENDING EDITING SECTION
 });
