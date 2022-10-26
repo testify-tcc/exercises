@@ -1,0 +1,23 @@
+{
+  "id": "designing-contracts::tax-calculator",
+  "panelLabel": "Tax calculator",
+  "panelPosition": 1,
+  "testEnvironments": ["typescript-jest"],
+  "fileSchemasMap": {
+    "typescript-jest": [
+      {
+        "fileName": "tax-calculator.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "tax-calculator.test.ts",
+        "type": "TEST"
+      }
+    ]
+  },
+  "testCommandsMap": {
+    "typescript-jest": "jest"
+  },
+  "description": "description.md",
+  "solution": "solution.md"
+}

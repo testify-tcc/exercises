@@ -1,0 +1,27 @@
+{
+  "id": "designing-contracts::basket",
+  "panelLabel": "Basket",
+  "panelPosition": 2,
+  "testEnvironments": ["typescript-jest"],
+  "fileSchemasMap": {
+    "typescript-jest": [
+      {
+        "fileName": "basket.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "utils.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "basket.test.ts",
+        "type": "TEST"
+      }
+    ]
+  },
+  "testCommandsMap": {
+    "typescript-jest": "jest"
+  },
+  "description": "description.md",
+  "solution": "solution.md"
+}
