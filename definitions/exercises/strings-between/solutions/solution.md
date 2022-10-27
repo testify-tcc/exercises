@@ -50,7 +50,7 @@ A good way to start is to think about the inputs separately:
   - Null string
   - Empty string
   - String of length 1
-  - String of length $>$ 1 (any string)
+  - String of length > 1 (any string)
 - `open` can be represented by the same cases as `str`
 - `close` can be represented by the same cases as `str`
 
@@ -100,18 +100,18 @@ Once we have the inputs, outputs and boundaries analyzed, we can start to create
   - T4: `open` is empty
   - T5: `close` is null
   - T6: `close` is empty
-- `str` length $=$ 1
+- `str` length = 1
   - T7: the single character in `str` matches `open`
   - T8: the single character in `str` matches `close`
   - T9: the single character in `str` doesn't match either the `open` or `close` tag
   - T10: the single character in `str` matches both the `open` and `close` tags
-- `str` length $>$ 1, `open` length $=$ 1, `close` length $=$ 1:
+- `str` length > 1, `open` length = 1, `close` length = 1:
   - T11: `str` doesn't contain either `open` or `close` tag
   - T12: `str` contains `open` but not `close` tag
   - T13: `str` contains `close` but not `open` tag
   - T14: `str` contains both the `open` and `close` tags
   - T15: `str` contains both the `open` and `close` tags multiple times
-- `str` length $>$ 1, `open` length $>$ 1, `close` length $>$ 1:
+- `str` length > 1, `open` length > 1, `close` length > 1:
   - T16: `str` doesn't contain either `open` or `close` tag
   - T17: `str` contains `open` but not `close` tag
   - T18: `str` contains `close` but not `open` tag
@@ -127,8 +127,8 @@ Basically use a library of framework to code your tests.
 
 Experience always counts. For example, it'd be good to have tests that deal with spaces or any type of special characters in the string.
 
-- T22: `str` contains both `open` and `close` tags (`str` length $>$ 1, `open` length $=$ 1, `close` length $=$ 1). The input `str` contains spaces.
-- T23: `str` contains both `open` and `close` tags (`str` length $>$ 1, `open` length $>$ 1, `close` length $>$ 1). All three contain spaces.
+- T22: `str` contains both `open` and `close` tags (`str` length > 1, `open` length = 1, `close` length = 1). The input `str` contains spaces.
+- T23: `str` contains both `open` and `close` tags (`str` length > 1, `open` length > 1, `close` length > 1). All three contain spaces.
 
 Although the implementation might handle these situations generically, they may need to be tested. Hence, it's always a good idea to go through the implementation again and check for tests not mentioned in the requirements.
 

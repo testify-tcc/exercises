@@ -1,4 +1,4 @@
-# Sample
+# Getting started
 
 This is a sample section for you to get used to the platform. Select one of the exercises below and learn how it works. If the exercise has more than one testing environment, you can select the desired by clicking in the dropdown (top-left). There are specific parts of the code to be modified, they are marked by the comments:
 

@@ -2,5 +2,5 @@
   "id": "designing-contracts",
   "panelLabel": "Designing Contracts",
   "panelPosition": 3,
-  "exercisesIds": ["designing-contracts::tax-calculator", "designing-contracts::basket"]
+  "exercisesIds": ["tax-calculator", "basket"]
 }

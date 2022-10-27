@@ -1,5 +1,5 @@
 {
-  "id": "designing-contracts::basket",
+  "id": "basket",
   "panelLabel": "Basket",
   "panelPosition": 2,
   "testEnvironments": ["typescript-jest"],

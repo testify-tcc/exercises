@@ -1,0 +1,6 @@
+{
+  "id": "getting-started",
+  "panelLabel": "Getting started",
+  "panelPosition": 1,
+  "exercisesIds": ["sum", "subtract"]
+}

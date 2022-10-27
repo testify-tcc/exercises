@@ -1,5 +1,5 @@
 {
-  "id": "specification-based-testing::strings-between",
+  "id": "strings-between",
   "panelLabel": "Strings Between",
   "panelPosition": 1,
   "testEnvironments": ["typescript-jest"],

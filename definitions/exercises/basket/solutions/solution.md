@@ -83,4 +83,4 @@ public remove(product: Nullable<Product>): void {
 }
 ```
 
-You are probably thinking that since using inputs smaller than $10$ would throw errors, the pre-condition should ensure inputs greater than or equal to $10$, and you are correct. But for the sake of learning we didn't do that, as we it's a simple program and we need an example for post-condition.   
+You are probably thinking that since using inputs smaller than 10 would throw errors, the pre-condition should ensure inputs greater than or equal to 10, and you are correct. But for the sake of learning we didn't do that, as we it's a simple program and we need an example for post-condition.   

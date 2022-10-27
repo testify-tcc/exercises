@@ -1,5 +1,5 @@
 {
-  "id": "designing-contracts::tax-calculator",
+  "id": "tax-calculator",
   "panelLabel": "Tax calculator",
   "panelPosition": 1,
   "testEnvironments": ["typescript-jest"],
