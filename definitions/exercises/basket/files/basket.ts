@@ -31,4 +31,7 @@ export class Basket {
   public getProductQuantity(product: Product): number {
     return this.productStorage.getQuantity(product);
   }
+
+  // BEGINNING EXTRA EDITING SECTION
+  // ENDING EXTRA EDITING SECTION
 }
