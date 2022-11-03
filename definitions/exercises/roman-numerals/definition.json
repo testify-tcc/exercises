@@ -1,0 +1,23 @@
+{
+  "id": "roman-numerals",
+  "panelLabel": "Roman numerals",
+  "panelPosition": 1,
+  "testEnvironments": ["typescript-jest"],
+  "fileSchemasMap": {
+    "typescript-jest": [
+      {
+        "fileName": "roman-numerals.ts",
+        "type": "CODE"
+      },
+      {
+        "fileName": "roman-numerals.test.ts",
+        "type": "TEST"
+      }
+    ]
+  },
+  "testCommandsMap": {
+    "typescript-jest": "jest"
+  },
+  "description": "description.md",
+  "solution": "solution.md"
+}
